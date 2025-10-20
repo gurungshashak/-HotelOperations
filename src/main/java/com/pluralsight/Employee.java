@@ -39,7 +39,7 @@ public class Employee {
     }
 
     private void getOvertimeHours() {
-        if (hourWorked < getHourWorked()) {
+        if (hourWorked < 40) {
             payRate = (payRate * 1.5) * hourWorked;
         }
     }
