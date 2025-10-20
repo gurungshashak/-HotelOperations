@@ -30,20 +30,20 @@ public class Employee {
         return hourWorked;
     }
 
-    private void getTotalPay() {
+    public double getTotalPay() {
         double total=hourWorked * payRate;
+        return total;
     }
 
-    private void getRegularHours() {
+    public int getRegularHours() {
         int regularHours = 40;
+        return regularHours;
     }
 
-    private void getOvertimeHours() {
+    public double getOvertimeHours() {
         if (hourWorked < 40) {
             payRate = (payRate * 1.5) * hourWorked;
         }
+        return getOvertimeHours();
     }
-
-
-
 }

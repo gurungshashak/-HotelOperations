@@ -42,13 +42,12 @@ public class Reservation {
         this.numberOfNights = numberOfNights;
     }
 
-    public void setWeekend(boolean weekend) {
-        this.price = (price * .1) + price;
-
+    public double setWeekend(boolean weekend) {
+        return (price * .1) + price;
     }
 
-    private void reservationTotal(){
-        double total = price * numberOfNights;
+    public double reservationTotal(){
+        return price * numberOfNights;
     }
 
 }
