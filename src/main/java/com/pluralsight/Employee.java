@@ -1,49 +1,68 @@
 package com.pluralsight;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 public class Employee {
     private int employeeId;
     private String name;
     private String department;
     private double payRate;
-    private int hourWorked;
+    private double hourWorked;
+    private double startTime;
 
-    public Employee(int employeeId, String name, String department, double payRate, int hourWorked) {
+    public Employee(int employeeId, String name, String department, double payRate) {
         this.employeeId = employeeId;
         this.name = name;
         this.department = department;
         this.payRate = payRate;
         this.hourWorked = hourWorked;
     }
-    public int getEmployeeId() {
-        return employeeId;
-    }
-    public String getName() {
-        return name;
-    }
-    public String getDepartment() {
-        return department;
-    }
-    public double getPayRate() {
-        return payRate;
-    }
-    public int getHourWorked() {
-        return hourWorked;
-    }
 
     public double getTotalPay() {
-        double total=hourWorked * payRate;
-        return total;
+       double regularPay = this.payRate * this.hourWorked;
+       double overTime = (this.payRate * 1.5) * this.getOvertimeHours();
+
+       return regularPay + overTime;
+
     }
 
-    public int getRegularHours() {
-        int regularHours = 40;
-        return regularHours;
+    public double getRegularHours() {
+        if(this.hourWorked<= 40){
+            return this.hourWorked;
+        }
+        return 40;
     }
 
     public double getOvertimeHours() {
         if (hourWorked < 40) {
-            payRate = (payRate * 1.5) * hourWorked;
+            return this.hourWorked - 40;
+        }else {
+        return 0;
         }
-        return getOvertimeHours();
     }
+
+    public void punchIn(double time){
+        this.startTime = time;
+    }
+
+    public void punchOut(double time){
+        this.hourWorked += (time - this.startTime)
+    this.startTime = 0;
+    }
+
+
+    public void punchTimecard(double time) {
+        while (true) {
+            if (this.startTime < 0) {
+                this.hourWorked += (time - this.startTime);
+                this.startTime = 0;
+            } else
+                this.startTime = time;
+        }
+    }
+
 }

@@ -19,17 +19,28 @@ public class Room {
     public double getPrice() {
         return price;
     }
-    public boolean isOccupied(boolean Occupied) {
+    public boolean isOccupied() {
         return Occupied;
     }
-    public boolean isDirty(boolean Dirty){
+    public boolean isDirty(){
         return Dirty;
     }
 
     public boolean isAvailable(){
-        if(!Occupied && !Dirty){
-            return true;
-        }else
-            return false;
+     return (!this.Occupied && !this.Dirty);
+    }
+
+    public void isCheckOut(){
+        this.Occupied = false;
+    }
+
+    public void  isCheckIn(){
+
+        this.Occupied = true;
+        this.Dirty = true;
+    }
+
+    public void isClean(){
+        this.Dirty = false;
     }
 }
