@@ -17,6 +17,9 @@ public class Employee {
         this.payRate = payRate;
         this.hourWorked = hourWorked;
     }
+    public double getHourWorked() {
+        return hourWorked;
+    }
 
     public double getTotalPay() {
        double regularPay = this.payRate * this.hourWorked;
